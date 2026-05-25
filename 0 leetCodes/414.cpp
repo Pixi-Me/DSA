@@ -3,12 +3,12 @@ using namespace std;
 
 int thirdLargest(vector<int>& nums){
     int max=nums[0];
-    int max2=0;
-    int max3=0;
+    int max2;
+    int max3;
     for(int i=1;i<nums.size();i++){
         if(nums[i]==max) continue;
         
-        if(nums[i]>max){
+        else if(nums[i]>max){
             max3=max2;
             max2=max;
             max=nums[i];
@@ -23,13 +23,13 @@ int thirdLargest(vector<int>& nums){
             max3=nums[i];
         }
     }
-    if(max3) return *max_element(nums.begin(),nums.end());
+    if(!max3 || nums.size()<=2) return *max_element(nums.begin(),nums.end());
     return max3;
 }
 int main(){
     vector<int> nums1 = {1,2,3};
     vector<int> nums2 = {2,1,-2147483648};
-    vector<int> nums3 = {1,2,2,3};
+    vector<int> nums3 = {14};
     int max3 = thirdLargest(nums3);
     cout<<max3;
 }
